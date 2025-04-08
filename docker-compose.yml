@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  deepstream:
+    image: pkar443/deepstream-custom:v1  # Prebuilt Docker image
+    container_name: deepstream_container
+    runtime: nvidia
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./deepstream-app:/workspace/deepstream-app  # Adjust path as needed
+    privileged: true
+    stdin_open: true
+    tty: true
+    command: /bin/bash
